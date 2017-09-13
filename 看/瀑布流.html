@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        #box{
+            width:650px;
+            margin:0 auto;
+        }
+        #box ul{
+            float:left;
+            width:118px;
+            border:1px solid #000;
+            margin:0 5px;
+        }
+        #box ul li{
+            width:108px;
+            margin:5px;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        function rnd(n,m){
+           return  parseInt(Math.random()*(m-n))+n;
+        }
+        $(function(){
+            var oBox=document.getElementById('box');
+            var aUl=oBox.children;
+
+
+        })
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+        </ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </div>
+</body>
+</html>

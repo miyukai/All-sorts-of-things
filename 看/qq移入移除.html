@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        #lef,#rig{
+            position: absolute;
+            top: 20px;
+        }
+        #lef{
+            width:100px;
+            height:100px;
+            background:slateblue;
+        }
+        #rig{
+            width:320px;
+            height:280px;
+            background:cornflowerblue;
+            left:120px;
+            display: none;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        $(function(){
+            var oLef=document.getElementById('lef');
+            var oRig=document.getElementById('rig');
+            var timer=null;
+
+            oLef.onmouseover=function(){
+                clearTimeout(timer);
+                oRig.style.display='block';
+            };
+            oLef.onmouseout=function(){
+                timer=setTimeout(function(){
+                    oRig.style.display='none';
+                },500);
+            };
+
+            oRig.onmouseover=function(){
+                clearTimeout(timer);
+
+            };
+            oRig.onmouseout=function(){
+                timer=setTimeout(function(){
+                    oRig.style.display='none';
+                },500);
+            };
+
+
+        });
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div id="lef"></div>
+        <div id="rig"></div>
+    </div>
+</body>
+</html>

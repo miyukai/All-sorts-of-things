@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 400px;
+        }
+
+        .shuju {
+            display: none;
+            width: 400px;
+        }
+
+        td {
+            width: 76px;
+            height: 30px;
+            text-align: center;
+        }
+
+        #page {
+            text-align: center;
+            width: 400px;
+        }
+
+        #biao {
+            height: 270px;
+            width: 400px;
+            background-color: #e2f6f8;
+        }
+
+        #add {
+            background-color: #e2f6f8;
+            display: none;
+            position: absolute;
+            z-index: -1;
+            border: 1px solid #9db4eb;
+        }
+
+        #header {
+            height: 30px;
+            background-color: #9db4eb;
+        }
+        #pre {
+            position:absolute;
+            z-index:9;
+            left:150px;
+            top:240px;
+        }
+        #next {
+           position:absolute;
+           z-index:9;
+           left:200px;
+           top:240px;
+        }
+    </style>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            var index = 0;
+            xianshi();
+            $(":button[value=下一页]").click(function () {
+                index++;
+                xianshi();
+            })
+            $(":button[value=上一页]").click(function () {
+                index--;
+                xianshi();
+            })
+            //每一行末尾的删除按钮删除
+            $(":button[value=删除]").click(function () {
+                $(this).parent().parent().remove();
+                xianshi();
+            })
+
+            function xianshi() {
+                //
+                $(".shuju:visible").hide();
+                $(":button").attr("disabled", false);
+                $("#index").html(index + 1);
+                $("#total").html(Math.ceil($(".shuju").length / 5))
+                if (index == 0) {
+                    $(":button[value=上一页]").attr("disabled", true);
+                    $(".shuju:lt(5)").show();
+                }
+                else {
+                    $(".shuju:gt(" + (index * 5 - 1) + "):lt(5)").show();
+                }
+                if (index == Math.floor(($(".shuju").length-1) / 5)) {
+                    $(":button[value=下一页]").attr("disabled", true);
+                }
+            }
+
+            $(":button[value=确定]").click(function () {
+                $("<tr class='shuju'></tr>").append("<td><input type='checkbox'></td>")
+                .append("<td>" + $("#xingming").val() + "</td>")
+                .append("<td>" + $("#xingbie").val() + "</td>")
+                .append("<td>" + $("#fenshu").val() + "</td>")
+                .append("<td><input type='button' value='删除'></td>")
+                .insertAfter("tr:first");
+                xianshi();
+                $(":button[value=删除]").click(function () {
+                    $(this).parent().parent().remove();
+                    xianshi();
+                    if ($(".shuju:visible").length==0) {
+                        index--;
+                        xianshi();
+                    }
+                })
+            })
+            $(":button[value=添加]").click(function () {
+                $("#add").show(100, function () {
+                    $("#add").css({ "z-index": "10", "left": "100px", "top": "50px" });
+                });
+            });
+            $(":button[value=取消]").click(function () {
+                $("#add").hide(100, function () {
+                    $("#add").css("z-index", "-1");
+                });
+            })
+            $("#header").mousedown(function (e) {
+                var ev = e || event;
+                var disx = ev.offsetX;
+                var disy = ev.offsetY;
+                $("#add").mousemove(function (e1) {
+                    var ev1 = e1 || event;
+                    var x = ev1.clientX - disx + "px";
+                    var y = ev1.clientY - disy + "px";
+                    $("#add").css({ "left": x, "top": y })
+                })
+            })
+            $("#header").mouseup(function () {
+                $("#add").unbind("mousemove");
+            })
+            $(":checkbox:visible:first").click(function () {
+                $(":checkbox:visible:gt(0)").prop("checked", $(this).prop("checked"));
+            })
+            $(":button[value=删除选中项]").click(function () {
+                $(".shuju :checkbox:checked").parent().parent().remove();
+                xianshi();
+                if ($(".shuju:visible").length == 0) {
+                    index--;
+                    xianshi();
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="add">
+        <div id="header"></div>
+        姓名:<input type="text" id="xingming" /><br />
+        性别:<input type="text" id="xingbie" /><br />
+        分数:<input type="text" id="fenshu" /><br />
+        <input type="button" value="确定" />
+        <input type="button" value="取消" />
+    </div>
+    <div id="biao">
+        <input type="button" value="添加" />
+        <input type="button" value="删除选中项" />
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>
+                    <input type="checkbox" />全选</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>分数</td>
+                <td>操作</td>
+            </tr>
+            <tr class="shuju">
+                <td>
+                    <input type="checkbox" /></td>
+                <td>张三</td>
+                <td>男</td>
+                <td>80</td>
+                <td>
+                    <input type="button" value="删除" /></td>
+            </tr>
+        </table>
+        <p id="page">当前第<span id="index"></span>
+            页，共<span id="total"></span>页</p>
+        <input type="button" value="上一页" id="pre"/>
+        <input type="button" value="下一页" id="next"/>
+    </div>
+
+</body>
+</html>

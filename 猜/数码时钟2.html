@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background:#003;
+            text-align:center;
+        }
+        #time,#year{
+            padding-top:20px;
+        }
+    </style>
+    <script>
+        function toDou(n){
+            return n<10?'0'+n:''+n;
+        }
+        window.onload=function(){
+            var aImg=document.getElementsByTagName('img');
+
+            var oDate=new Date();
+            var oY=oDate.getFullYear();
+            var oM=oDate.getMonth();
+            var oD=oDate.getDate();
+
+            var iH=oDate.getHours();
+            var iM=oDate.getMinutes();
+            var iS=oDate.getSeconds();
+
+            var str=toDou(oY)+toDou(oM)+toDou(oD)+toDou(iH)+toDou(iM)+toDou(iS);
+
+
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <h2>
+            <img src="img/title.png" alt="">
+        </h2>
+        <div id="year">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/year.png" alt="">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/month.png" alt="">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/seven.png" alt="">
+
+        </div>
+        <div id="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/sign.png" alt="">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/sign.png" alt="">
+            <img src="img/0.png" alt="time">
+            <img src="img/0.png" alt="time">
+            <img src="img/week.png" alt="">
+            <img src="img/five.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

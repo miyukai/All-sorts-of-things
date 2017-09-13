@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width:160px;
+            height:400px;
+            margin:5px;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        function getPos(obj){
+            var l=0;
+            var t=0;
+            while(obj){
+                l+=obj.offsetLeft;
+                t+=obj.offsetTop;
+
+                obj=obj.offsetParent;
+            }
+            return {left:l,top:t};
+        }
+        $(function(){
+
+            var aImg=document.getElementsByTagName('img');
+
+            window.onscroll=function(){
+                var scrollT=document.documentElement.scrollTop || document.body.scrollTop;
+                var clientH=document.documentElement.clientHeight;
+                var scrollH=scrollT+clientH;
+
+                for(var i=0;i<aImg.length;i++){
+                    if(getPos(aImg[i]).top<=scrollH){
+                        aImg[i].src=aImg[i].getAttribute('_src');
+                    }
+                }
+
+            };
+            window.onscroll();
+        });
+    </script>
+</head>
+<body>
+    <img _src="img/b1.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b2.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b3.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b4.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b5.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b6.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b7.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b8.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b9.jpg"  src='img/b1.jpg'alt="">
+    <img _src="img/b10.jpg" src='img/b1.jpg'alt="">
+</body>
+</html>

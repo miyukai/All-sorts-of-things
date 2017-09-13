@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function ready(){
+            if(document.addEventListener){
+                document.addEventListener('DOMContentLoaded',function(){
+                    alert(document.body+'DOM');
+                },false);
+            }else{
+                document.onreadystatechange=function(){
+                    if(document.readyState=='complete'){
+                        alert(document.body+'ready');
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

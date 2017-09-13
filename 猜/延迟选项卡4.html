@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        input.ac{
+            background:slateblue;
+        }
+        #box{
+            width:320px;
+            height:280px;
+            margin:0 auto;
+        }
+        #box div{
+            width:320px;
+            height:280px;
+            border:1px solid #000;
+            display:none;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oBox=document.getElementById('box');
+            var aBtn=oBox.getElementsByTagName('input');
+            var aDiv=oBox.getElementsByTagName('div');
+
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].onmouseover=function(){
+                    var iNow=this.getAttribute('index');
+                    for(var i=0;i<aBtn.length;i++){
+                        aBtn[i].className='';
+                        aDiv[i].style.display='none';
+                    }
+
+                    aBtn[iNow].className='ac';
+                    aDiv[iNow].style.display='block';
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input class='ac' type="button" value="按钮一" index="0">
+        <input type="button" value="按钮二" index="1">
+        <input type="button" value="按钮三" index="2">
+        <div style="display:block;">001</div>
+        <div>002</div>
+        <div>003</div>
+    </div>
+</body>
+</html>

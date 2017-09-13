@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            display:block;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var aBtn=document.getElementsByTagName('input');
+            var iNow=0;
+
+
+            aBtn[0].onclick=function(){
+                if(this.checked){
+                    for(var i=0;i<aBtn.length;i++){
+                        if(!i)continue;
+                        aBtn[i].checked=true;
+                    }
+                }else{
+                    for(var i=0;i<aBtn.length;i++){
+                        if(!i)continue;
+                        aBtn[i].checked=false;
+                    }
+                }
+
+            };
+
+            for(var i=1;i<aBtn.length;i++){
+                aBtn[i].onclick=function(){
+                    if()
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="checkbox" name="" id="">
+<hr>
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+<input type="checkbox" name="" id="">
+</body>
+</html>

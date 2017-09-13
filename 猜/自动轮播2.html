@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        input.ac{
+            background:slateblue;
+        }
+        #box{
+            width:320px;
+            height:280px;
+            margin:0 auto;
+            text-align:center;
+        }
+        #box div{
+            width:320px;
+            height:280px;
+            border:1px solid #000;
+            display:none;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oBox=document.getElementById('box');
+            var aBtn=oBox.getElementsByTagName('input');
+            var aDiv=oBox.getElementsByTagName('div');
+            var aA=oBox.getElementsByTagName('a');
+            var timer=null;
+            var iNow=0;
+
+            function tab(iNow){
+                for(var i=0;i<aBtn.length;i++){
+                    aBtn[i].className='';
+                    aDiv[i].style.display='none';
+                }
+                aBtn[iNow].className='ac';
+                aDiv[iNow].style.display='block';
+
+            }
+
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index=i;
+                aBtn[i].onmouseover=function(){
+                    tab(this.index)
+                };
+            }
+            aA[0].onclick=function(){
+                iNow--;
+
+                if(iNow<0)iNow=2;
+
+                tab(iNow);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <a href="javascript:;">←</a>
+        <input class='ac' type="button" value="按钮一">
+        <input type="button" value="按钮二">
+        <input type="button" value="按钮三">
+        <a href="javascript:;">→</a>
+        <div style="display:block;">001</div>
+        <div>002</div>
+        <div>003</div>
+    </div>
+</body>
+</html>

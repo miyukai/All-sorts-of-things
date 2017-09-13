@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: #6265f3;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script src="1.tween.js"></script>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+
+            document.onclick=function(){
+                doMove(oDiv,{left:200,top:200,fontSize:50});
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="div1">sdfsdfsdf</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            position:relative;
+            margin:20px;
+            border:1px solid #000;
+        }
+        img{
+            margin-top:10px;
+            width:160px;
+            height:400px;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        $(function(){
+            var oImg=document.getElementById('img1');
+
+            function getPos(obj){
+                var t=0;
+                var l=0;
+
+                while(obj){
+                    t+=obj.offsetTop;
+                    l+=obj.offsetLeft;
+
+                    obj=obj.offsetParent;
+                }
+
+                return {left:l,top:t};
+
+            }
+            console.log(getPos(oImg).top);
+
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <img src="img/b1.jpg" alt="" id="img1">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

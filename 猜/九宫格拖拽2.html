@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        #box{
+            width:300px;
+            height:200px;
+            background:slateblue;
+            position:absolute;
+            left:100px;
+            top:100px;
+            cursor:pointer;
+        }
+        .r,.l,.t,.b{
+            position:absolute;
+            background: #ff4b42;
+        }
+        .lb,.lt,.rb,.rt{
+            position:absolute;
+            width:20px;
+            height:20px;
+            background: #e16eff;
+        }
+        .rt{
+            right: 0;
+            top:0;
+        }
+        .lb{
+            bottom:0;
+        }
+        .rb{
+            right:0;
+            bottom:0;
+        }
+        .l{
+            width: 20px;
+            height: 100%;
+        }
+        .t{
+            top: 0;
+            width: 100%;
+            height: 20px;
+        }
+        .r{
+            width:20px;
+            height:100%;
+            right:0;
+        }
+        .b{
+            width:100%;
+            height:20px;
+            bottom:0;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oBox=document.getElementById('box');
+            var aDiv=oBox.children;
+
+            aDiv[0].onmousedown=function(ev){
+                var oEvent=ev||event;
+                var disX=oEvent.clientX;
+                var oW=oBox.offsetWidth;
+
+                document.onmousemove=function(ev){
+                    var oEvent=ev||event;
+                    var targetX=oEvent.clientX-disX;
+
+                    oBox.style.width=oW+targetX+'px';
+                };
+                document.onmouseup=function(){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                    aDiv[0].releaseCapture && aDiv[0].releaseCapture();
+                };
+                aDiv[0].setCapture && aDiv[0].setCapture();
+                return false;
+            };
+            aDiv[1].onmousedown=function(ev){
+                var oEvent=ev||event;
+                var disY=oEvent.clientY;
+                var oH=oBox.offsetHeight;
+
+                document.onmousemove=function(ev){
+                    var oEvent=ev||event;
+                    var targetY=oEvent.clientY-disY;
+
+                    oBox.style.height=oH+targetY+'px';
+                };
+                document.onmouseup=function(){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                    aDiv[1].releaseCapture && aDiv[1].releaseCapture();
+                };
+                aDiv[1].setCapture && aDiv[1].setCapture();
+                return false;
+            };
+            aDiv[2].onmousedown=function(ev){
+                var oEvent=ev||event;
+                var disX=oEvent.clientX;
+                var oW=oBox.offsetWidth;
+                var oL=oBox.offsetLeft;
+
+                document.onmousemove=function(ev){
+                    var oEvent=ev||event;
+                    var targetX=-(oEvent.clientX-disX);
+
+                    oBox.style.width=oW+targetX+'px';
+                    oBox.style.left=oL-targetX+'px';
+                };
+                document.onmouseup=function(){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                    aDiv[2].releaseCapture && aDiv[2].releaseCapture();
+                };
+                aDiv[2].setCapture && aDiv[2].setCapture();
+                return false;
+            };
+            aDiv[7].onmousedown=function(ev){
+                var oEvent=ev||event;
+                var disY=oEvent.clientY;
+                var oH=oBox.offsetHeight;
+                var oW=oBox.offsetWidth;
+                var disX=oEvent.clientX;
+
+                document.onmousemove=function(ev){
+                    var oEvent=ev||event;
+                    var targetY=oEvent.clientY-disY;
+                    var targetX=oEvent.clientX-disX;
+
+                    oBox.style.height=oH+targetY+'px';
+                    oBox.style.width=oW+targetX+'px';
+                };
+                document.onmouseup=function(){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                    aDiv[7].releaseCapture && aDiv[7].releaseCapture();
+                };
+                aDiv[7].setCapture && aDiv[7].setCapture();
+                return false;
+            }
+
+        };
+    </script>
+</head>
+<body>
+      <div id="box">
+            <div class="r"></div>
+            <div class="b"></div>
+            <div class="l"></div>
+            <div class="t"></div>
+            <div class="lt"></div>
+            <div class="rt"></div>
+            <div class="lb"></div>
+            <div class="rb"></div>
+      </div>
+</body>
+</html>

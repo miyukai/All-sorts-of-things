@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        #lef,#rig{
+            position: absolute;
+        }
+        #lef{
+            width:150px;
+            height:150px;
+            border:1px solid #000;
+        }
+        #lef img{
+            width:100%;
+            height:100%;
+        }
+        #rig{
+            left: 170px;
+            width:300px;
+            height:300px;
+            border:1px solid #000;
+            overflow:hidden;
+            display:none;
+        }
+        #rig img{
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        #small_shadow{
+            position:absolute;
+            width:60px;
+            height:60px;
+            left:0;
+            top:0;
+            background:rgba(0,0,0,.3);
+            display:none;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        $(function(){
+            var oSmall=document.getElementById('small_shadow');
+            var oLef=document.getElementById('lef');
+            var oRig=document.getElementById('rig');
+            var oImg=document.getElementById('img1');
+
+            oLef.onmouseover=function(){
+                oSmall.style.display=oRig.style.display='block';
+            };
+            oLef.onmouseout=function(){
+                oSmall.style.display=oRig.style.display='none';
+            };
+
+            oLef.onmousemove=function(ev){
+                var oEvent=ev||event;
+                var l=oEvent.clientX-oSmall.offsetWidth/2;
+                var t=oEvent.clientY-oSmall.offsetHeight/2;
+
+                var clientW=oLef.offsetWidth-oSmall.offsetWidth-2;
+                var clientH=oLef.offsetHeight-oSmall.offsetHeight-2;
+                var oImgW=oImg.offsetWidth-oRig.offsetWidth;
+                var oImgH=oImg.offsetHeight-oRig.offsetHeight;
+
+                var scaleX=oImgW/clientW;
+                var scaleY=oImgH/clientH;
+
+                (l<0) && (l=0);
+                (t<0) && (t=0);
+
+                (l>clientW)&&(l=clientW);
+                (t>clientH)&&(t=clientH);
+
+                oImg.style.left=-l*scaleX+'px';
+                oImg.style.top=-t*scaleY+'px';
+
+                oSmall.style.left=l+'px';
+                oSmall.style.top=t+'px';
+
+            }
+
+        });
+    </script>
+
+</head>
+<body>
+    <div id="box">
+        <div id="lef">
+            <div id="small_shadow"></div>
+            <img src="image/iphone.jpg" alt="">
+        </div>
+        <div id="rig">
+            <img id="img1" src="image/iphone.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

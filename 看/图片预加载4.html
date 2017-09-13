@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .spinner {
+            margin: 100px auto;
+            width: 80px;
+            height: 60px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .spinner > div {
+            background-color: #67CF22;
+            height: 100%;
+            width: 6px;
+            display: inline-block;
+
+            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+            animation: stretchdelay 1.2s infinite ease-in-out;
+        }
+
+        .spinner .rect2 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+        }
+
+        .spinner .rect3 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+
+        .spinner .rect4 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+        }
+
+        .spinner .rect5 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+        }
+
+        @-webkit-keyframes stretchdelay {
+            0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+            20% { -webkit-transform: scaleY(1.0) }
+        }
+
+        @keyframes stretchdelay {
+            0%, 40%, 100% {
+                transform: scaleY(0.4);
+                -webkit-transform: scaleY(0.4);
+            }  20% {
+                   transform: scaleY(1.0);
+                   -webkit-transform: scaleY(1.0);
+               }
+        }
+        #shadow{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+        }
+        #bar_box{
+            width: 300px;
+            height: 26px;
+            border:1px solid #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #bar_box span{
+            position: relative;
+            z-index:2;
+        }
+        #bar_box{
+            text-align: center;
+            line-height: 26px;
+            color:#fff;
+            box-shadow:1px 1px 10px #000;
+            border-radius:4px;
+            overflow:hidden;
+        }
+        #bar{
+            box-shadow:1px 1px 20px #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width:0%;
+            height:100%;
+            background:sandybrown;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        $(function(){
+            var iCount=77;
+            var iNow=0;
+
+            for(var i=0;i<iCount;i++){
+                var oImg=new Image();
+
+
+                oImg.onload=function(){
+                    iNow++;
+                    document.title=iNow;
+                };
+
+                oImg.src='http://www.zhinengshe.com/works/3525/img/'+i+'.jpg';
+            }
+
+        });
+    </script>
+</head>
+<body>
+<div id="shadow"></div>
+<div id="bar_box">
+    <span>10.00%</span>
+    <div id="bar"></div>
+</div>
+<div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+</div>
+</body>
+</html>

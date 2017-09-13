@@ -1,0 +1,90 @@
+
+    window.onload
+
+        =>
+            页面加载完成以后在进行加载
+
+            img src
+
+            视频
+
+            音频
+
+--------------------------------------------------------
+
+    $(function(){
+
+    });
+
+--------------------------------------------------------
+
+    元素加载完成以后加载 (必须绑定事件添加);
+
+        DOMContentLoaded
+
+            兼容问题 ie9++ chrome firefox
+
+--------------------------------------------------------
+
+    1、  ie7 8
+
+    2、ie9++ chrome firefox
+
+--------------------------------------------------------
+
+   判断浏览器内核
+
+        先打出来浏览器内核
+
+            window.navigator.userAgent
+
+            str='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36';
+
+        判断浏览器内核
+
+
+            Chrome
+
+            str.indexOf('MSIE')!=-1
+
+            window.navigator.userAgent.toLowerCase().indexOf
+
+--------------------------------------------------------
+
+    true object function  非零数字 string
+
+    false 空对象(null) undefined  0  空字符串
+
+--------------------------------------------------------
+
+        监听页面资源加载
+
+    document.onreadystatechange
+
+--------------------------------------------------------
+
+    img
+
+        onload  图片加载完成
+
+        onerror  图片加载失败
+
+        new Array();
+
+        new Function();
+
+        new Object();
+
+        new Date();
+
+        new String();
+
+        new Image();
+
+--------------------------------------------------------
+
+
+
+
+
+

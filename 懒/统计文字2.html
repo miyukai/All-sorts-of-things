@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计文字个数</title>
+    <style>
+        #box{
+            width:386px;
+        }
+        #box span{
+            float:right;
+            padding-right:20px;
+            padding-bottom:10px;
+        }
+    </style>
+    <script src="ready.js"></script>
+    <script>
+        $(function(){
+            var oBox=document.getElementById('box');
+            var oT=document.getElementById('txt');
+            var oTit=document.getElementById('tit');
+
+            oT.oninput=function(){
+                oTit.innerHTML='已经输入'+oT.value.length;
+            };
+            oT.onpropertychange=function(){
+                oTit.innerHTML='已经输入'+oT.value.length;
+            }
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <div id="box">
+        <span id="tit"></span>
+        <textarea id="txt" cols="60" rows="10"></textarea>
+    </div>
+</body>
+</html>

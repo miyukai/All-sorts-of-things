@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: seagreen;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementById('box');
+
+            oDiv.onmousedown=function(ev){
+                var oEvent=ev||event;
+                var disX=oEvent.clientX-oDiv.offsetLeft;
+                var disY=oEvent.clientY=oDiv.offsetTop;
+
+                oDiv.onmousemove=function(ev){
+                    var oEvent=ev||event;
+
+                    oDiv.style.left=oEvent.clientX+'px';
+                    oDiv.style.top=oEvent.clientY+'px';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

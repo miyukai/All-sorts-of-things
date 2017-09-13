@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            alert(document.body+'window');
+        };
+
+//        document.addEventListener('DOMContentLoaded',function(){
+//            alert(document.body+'document');
+//        },false);
+
+        document.attachEvent('DOMContentLoaded',function(){
+            alert(document.body+'document1');
+        })
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
